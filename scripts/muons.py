@@ -9,6 +9,8 @@ from dataclasses import make_dataclass
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 
+from scipy.stats import expon
+
 
 logger = logging.getLogger("track_plotter")
 handler = logging.StreamHandler(sys.stdout)
@@ -108,10 +110,14 @@ Loss = make_dataclass(
 )
 
 
+def get_initial_energy():
+    return expon.rvs(loc=1e5, scale=1.5e5)
+
+
 def produce_losses():
     state = pp.particle.ParticleState()
     state.type = pp.particle.Particle_Type.MuMinus
-    state.energy = 0.5e6  # MeV
+    state.energy = get_initial_energy()
     state.position = get_injection_point()
     state.direction = get_direction(state.position)
 
@@ -129,7 +135,7 @@ def produce_data():
     data = []
     for i in range(200):
         losses = produce_losses()
-        halftime = 5e-3
+        halftime = 7e-3
         time += np.random.exponential(halftime)
         losses.time += time
         data.append(losses)
@@ -162,14 +168,14 @@ class UpdateDist:
         self.paths.set_edgecolors(self.colors)
         self.paths.set_facecolors(self.colors)
 
-        self.time_delta = 3e-3
-        self.time_step = 5e-6
-        self.time = -self.time_delta
+        self.time_delta = 5e-3
+        self.time_step = 1e-3
+        self.time = 0
 
         self.size = np.log(self.data.E) ** 5 / 500
 
     def __call__(self, i):
-        self.time += i * self.time_step
+        self.time += self.time_step
 
         cond1 = self.data.time > self.time
         cond2 = self.data.time < self.time + self.time_delta
@@ -189,5 +195,5 @@ ax.set_aspect(True)
 ax.set_axis_off()
 
 ud = UpdateDist(ax, data)
-anim = FuncAnimation(fig, ud, frames=600, interval=100)
+anim = FuncAnimation(fig, ud, frames=200, interval=50)
 anim.save("videos/muon.mp4")
