@@ -59,11 +59,9 @@ profiles = {}
 
 axis = pp.density_distribution.radial_axis(pp.Cartesian3D(0, 0, 0))
 sigma = -5.5 * 1e5  # km -> cm
-# profiles["air"] = pp.density_distribution.density_exponential(axis, sigma, earth_radius, targets["air"].mass_density)
 profiles["air"] = pp.density_distribution.density_homogeneous(
     1e-1 * targets["air"].mass_density
 )
-
 profiles["standardrock"] = pp.density_distribution.density_homogeneous(
     1e-4 * targets["standardrock"].mass_density
 )
