@@ -69,20 +69,35 @@
                 </section>
 
                 <section class="slide current">
+                    <div class="wrap size-80">
+                        <h2 ><b>Fields of Interest and Experties</b></h2>
+                        <p></p>
 
-                    <div class="wrap">
                         <div class="card-20 bg-white">
                             <figure>
                                 <img src="images/shower.jpg" alt=""/>
-                                <!-- <figcaption>Electromagnetic 200 TeV airshower </figcaption> -->
                             </figure>
                             <div class="flex-content">
                                 <h2>Monte Carlo Simulations</h2>
-                                <p>PROPOSAL</p>
-                                <p>CORSIKA</p>
-                                <p>CORSIKA</p>
-                                <p>CORSIKA</p>
-                                <p>CORSIKA</p>
+                                <p class="text-intro">
+                                In cases data are difficult to obtain, theories are available or statistical systems are observed, the study of Monte Carlo simulations can give evidence about certain circumstances.
+                                </p>
+
+                                <p>
+                                One application area for Monte Carlo simulations are extended air showers, which I investigated during my studies.
+                                If a astrophysical particle hits the atmosphere, it can partitionate parts of it's primary energy into the production of secondaries particle over a stochastical process.
+                                These secondaries particles can produce further particles if there energy is above a threshold.
+                                A simulation of a cascade an primary electron could produce is shown in the corresponding picture.
+                                </p>
+
+                                <p>
+                                Particle cascades in astophysical context can be simulated with the <a href="https://gitlab.ikp.kit.edu/AirShowerPhysics/corsika" target="_blank">CORSIKA</a> library.
+                                It can be used to measure the signal a primary particle produce for different detection channels.
+                                In my master thesis I implemented the first electromagnetic interaction model in CORSIKA's current version.
+                                Therefore I used the lepton and photon propagator <a href="https://github.com/tudo-astroparticlephysics/PROPOSAL" target="_blank">PROPOSAL</a> to simulate the production of secondaries particle and implement a module which communicates with CORSIKA.
+                                <!-- It can be also used to simulate the losses of a particle pentrating a certian medium, as shown on the animation at the opening slide. -->
+                                <!-- The size of the dots characterise the losen energy, decoded by a colour corresponding to an certain loss type. -->
+                                </p>
                             </div>
                         </div>
 
@@ -90,11 +105,19 @@
                         <div class="card-40 bg-white">
                             <div class="flex-content">
                                 <h2>Big Data Analysis</h2>
-                                <p>Data Processing</p>
+                                <p class="text-intro">
+                                If a data set exists, the task is to generate the maximum information content from it according to a problem definition.
+                                It has to be taken into account that very large amounts of data have to be processed and an uncertainty on the statements has to be estimated.
+                                Deep Learning offers a possibility to solve both problems in an appropriate way.
+                                </p>
+                                <p>reduktion des Problemkreises</p>
+                                <p>modelle aufstellen</p>
+                                <p>generalisieren</p>
+                                <p>unsicherheit abschaetzen</p>
+                                <p>robuste Aussagen treffen</p>
                             </div>
                             <figure>
-                                <img src="images/Bewerbungsfoto.JPG" alt=""/>
-                                <figcaption>hihi</figcaption>
+                                <img src="images/deep_learning.jpg" alt=""/>
                             </figure>
                         </div>
                     </div>
